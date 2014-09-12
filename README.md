@@ -8,6 +8,8 @@ Keys
 
 Pressing <kbd>Alt+left</kbd> or <kbd>Alt+right</kbd> or <kbd>Alt+up</kbd> or <kbd>Alt+down</kbd> will switch focus to the respective column or cell and resize it according to the configured ratio (which by default is "4:1" and "1:4"). 
 
+If you add <kbd>shift</kbd> to your shortcut, it will move the current editing file in the target group.
+
 So if you are a full-keyboard coder or a mouse lover, this plugin got you covered.
 
 

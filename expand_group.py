@@ -42,12 +42,15 @@ class PanelChangedCommand(sublime_plugin.EventListener):
 
 class GoToGroupCommand(sublime_plugin.WindowCommand):
     settings = None
-    def run(self, direction):
-        win   = self.window
-        num   = win.num_groups()
-        act   = win.active_group()
-        group = 0
-        
+    def run(self, direction, withCurrentFile=False):
+        win    = self.window
+        num    = win.num_groups()
+        act    = win.active_group()
+        group  = 0
+        action = "focus_group"
+
+        if withCurrentFile: action = "move_to_group"
+
         #If theres only one or 3 group in current window. Do nothing.
         if num == 1: return 0
         if num == 3: return 0
@@ -57,7 +60,7 @@ class GoToGroupCommand(sublime_plugin.WindowCommand):
         if direction == 'up'    : group = act - 2
         if direction == 'down'  : group = act + 2
 
-        win.run_command("focus_group", {"group": group})
+        win.run_command(action, {"group": group})
 
 class ExpandGroupCommand(sublime_plugin.WindowCommand):
     settings = None

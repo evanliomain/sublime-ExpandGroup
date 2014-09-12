@@ -2,5 +2,10 @@
     { "keys": ["alt+left"],  "command": "go_to_group", "args": { "direction": "left" } },
     { "keys": ["alt+right"], "command": "go_to_group", "args": { "direction": "right" } },
     { "keys": ["alt+up"],    "command": "go_to_group", "args": { "direction": "up" } },
-    { "keys": ["alt+down"],  "command": "go_to_group", "args": { "direction": "down" } }
+    { "keys": ["alt+down"],  "command": "go_to_group", "args": { "direction": "down" } },
+
+    { "keys": ["alt+shift+left"],  "command": "go_to_group", "args": { "direction": "left",  "withCurrentFile": true } },
+    { "keys": ["alt+shift+right"], "command": "go_to_group", "args": { "direction": "right", "withCurrentFile": true } },
+    { "keys": ["alt+shift+up"],    "command": "go_to_group", "args": { "direction": "up",    "withCurrentFile": true } },
+    { "keys": ["alt+shift+down"],  "command": "go_to_group", "args": { "direction": "down",  "withCurrentFile": true } }
 ]
