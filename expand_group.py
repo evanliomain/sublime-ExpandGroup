@@ -16,7 +16,7 @@ class PanelChangedCommand(sublime_plugin.EventListener):
     def on_activated(self, view):
         # Load settings.
         if self.settings == None:
-            self.settings = sublime.load_settings("expand-group.sublime-settings")
+            self.settings = sublime.load_settings("ExpandGroup.sublime-settings")
 
         # If mouse focus disabled. Exit.
         if self.settings.get('resize_on_focus') == False: return 0
@@ -67,12 +67,15 @@ class ExpandGroupCommand(sublime_plugin.WindowCommand):
     def run(self, ignore_focus_on_resize=False):
         # Load settings
         if self.settings == None:
-            self.settings = sublime.load_settings("expand-group.sublime-settings")
-        win    = self.window
-        num    = win.num_groups()
-        act    = win.active_group()
-        ratio  = 0.3
-        middle = 0.5
+            self.settings = sublime.load_settings("ExpandGroup.sublime-settings")
+        win       = self.window
+        num       = win.num_groups()
+        act       = win.active_group()
+        ratioConf = self.settings.get('ratio')
+        ratio     = 0.3
+        middle    = 0.5
+
+        if ratioConf != None: ratio = ratioConf
 
         #If theres only one or 3 group in current window. Do nothing.
         if num == 1: return 0

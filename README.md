@@ -13,6 +13,10 @@ If you add <kbd>shift</kbd> to your shortcut, it will move the current editing f
 So if you are a full-keyboard coder or a mouse lover, this plugin got you covered.
 
 
+Warning, the <kbd>Alt+up</kbd> and <kbd>Alt+down</kbd> may be in conflict with another plugin, such as "Emmet". Please set this keybinding into the "Key Bindings - User" file.
+
+
+
 What it does
 -----
 
