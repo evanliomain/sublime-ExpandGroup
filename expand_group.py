@@ -10,6 +10,13 @@ A fork of:
 """
 import sublime, sublime_plugin
 import logging
+import time
+
+# time.time() for when we called "focus_group" command
+LAST_FOCUS_GROUP_TIME = 0.
+# amout of time (in seconds) that we expect "on_activated" event to arrive after calling "focus_group"
+# so in that case we can assume "on_activated" was not triggered by mouse.
+EVENT_TIME = 0.4
 
 def getLogger():
   logging.basicConfig(format='%(message)s')
@@ -57,7 +64,10 @@ class PanelChangedCommand(sublime_plugin.EventListener):
             self.settings = sublime.load_settings("ExpandGroup.sublime-settings")
 
         # If mouse focus disabled. Exit.
-        if self.settings.get('resize_on_focus') == False: return 0
+        triggered_by_command = time.time() - LAST_FOCUS_GROUP_TIME < EVENT_TIME
+        triggered_by_mouse = not triggered_by_command
+
+        if triggered_by_mouse and self.settings.get('resize_on_focus') == False: return 0
 
         # If theres only one group in current window. Do nothing.
         if win.num_groups() == 1: return 0
@@ -117,6 +127,8 @@ class GoToGroupCommand(sublime_plugin.WindowCommand):
         #logger.info('group : %d', group)
         #logger.info('action: %s', action)
 
+        global LAST_FOCUS_GROUP_TIME
+        LAST_FOCUS_GROUP_TIME = time.time()
         win.run_command(action, {"group": group})
         #logger.info('===================================================')
 
