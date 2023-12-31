@@ -3,5 +3,8 @@
     // Put a float between 0 and 0.5
     // The target group will expand to 0 < 0.5 + ratio <= 1
     // Horizontally and Vertically
-    "ratio" : 0.3
+    "ratio" : 0.3,
+
+    // Whether to resize on mouse focus (default true)
+    "resize_on_focus" : true
 }
